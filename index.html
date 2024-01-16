@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css" />
+</head>
+<style>
+    .highlight {
+        background-color: yellow;
+    }
+
+    #para {
+        width: 350px;
+        height: 150px;
+        background-color: rgb(197, 45, 146);
+        margin: auto;
+        padding: 30px;
+        border-radius: 10px;
+
+    }
+
+    .search-bar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px;
+        padding: 10px;
+    }
+
+    input{
+        margin: 10px;
+        border: 2px solid black;
+        border-radius: 10px;
+    }
+</style>
+
+<body>
+    <p id="para">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        Vero officia neque laudantium, rem nihil, eaque architecto mollitia distinctio aspernatur quisquam praesentium
+        adipisci nisi?
+        Animi obcaecati, natus dolorum iure optio molestias.</p>
+
+    <div class="search-bar">
+        <input type="text" id="Search-Word">
+        <i class="fa-solid fa-magnifying-glass" onclick="search()"></i>
+    </div>
+
+    <script>
+        let text = document.getElementById("para").innerHTML;
+
+        function search() {
+            let input = document.getElementById("Search-Word").value;
+            let word = text.indexOf(input);
+
+            if (word !== -1) {
+
+                let parts = text.split(input);
+                text = parts.join('<span class="highlight">' + input + '</span>');
+
+                document.getElementById("para").innerHTML = text;
+
+            } else {
+                alert("Word not found!");
+            }
+        }
+    </script>
+</body>
+
+</html>
